@@ -59,7 +59,7 @@ $defaultCenter = array('-37.196353', '175.074638');
 
 $defaultZoom = 7;
 
-$field = MapDrawingField::create('GeoshapeCoordinates', '#fff', $otherShapes, true, $defaultCenter, #defaultZoom);
+$field = MapDrawingField::create('GeoshapeCoordinates', '#fff', $otherShapes, true, $defaultCenter, $defaultZoom);
 
 ```
 
