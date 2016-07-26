@@ -1,6 +1,6 @@
 # SilverStripe Map Drawing Field
 
-Provide an interface for drawing geocoded shapes.
+Provide an interface for drawing geocoded shapes using Google Maps
 
 ![Main view](docs/en/images/main.jpg)
 

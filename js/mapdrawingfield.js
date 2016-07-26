@@ -105,7 +105,6 @@
 
     function initOtherShapes(){
       var shapes = settings.shapes
-      console.log(shapes);
       var bounds = new google.maps.LatLngBounds(); 
       
       if(shapes instanceof Object && Object.keys(shapes).length > 0){
