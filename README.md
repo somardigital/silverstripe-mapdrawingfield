@@ -11,3 +11,8 @@ Provide an interface for drawing geocoded shapes.
 ## Documentation
 
 See the [docs folder](docs/en/index.md).
+
+## TO DO
+
+- Add tests and test hooks
+- Allow use in a non-CMS context

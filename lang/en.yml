@@ -1,3 +1,4 @@
 en:
   MapDrawingField:
+    NOMAP: 'If map is not showing, please refresh page'
    

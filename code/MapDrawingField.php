@@ -50,7 +50,7 @@ class MapDrawingField extends FormField{
 			'callback' => 'mapdrawInit'
 
 		);
-		if($key = Config::inst()->get('GoogleMaps', 'api_key')) {
+		if($key = Config::inst()->get('MapDrawingField', 'api_key')) {
 			$gmapsParams['key'] = $key;
 		}
 	
