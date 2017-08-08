@@ -1,5 +1,5 @@
 (function($) {
-  
+
   var gmapsAPILoaded = false;
 
   //Initialises the map
@@ -44,11 +44,11 @@
         polygonOptions: {
           fillColor: settings.map.colour,
           strokeColor: settings.map.colour
-        }, 
+        },
         drawingControl: true,
         drawingControlOptions: {
           position: google.maps.ControlPosition.TOP_CENTER,
-          drawingModes: [ 
+          drawingModes: [
             google.maps.drawing.OverlayType.POLYGON
           ]
         }
@@ -80,8 +80,8 @@
       objPoints = [];
       points.map(function(point){
         coords = point.split(', ');
-        lat = coords[0];
-        lng = coords[1];
+        lat = parseFloat(coords[0]);
+        lng = parseFloat(coords[1]);
         objPoints.push(new google.maps.LatLng(lat, lng));
       });
 
@@ -105,8 +105,8 @@
 
     function initOtherShapes(){
       var shapes = settings.shapes
-      var bounds = new google.maps.LatLngBounds(); 
-      
+      var bounds = new google.maps.LatLngBounds();
+
       if(shapes instanceof Object && Object.keys(shapes).length > 0){
         for(id in shapes){
           var shape = shapes[id];
@@ -116,8 +116,8 @@
           objPoints = [];
           points.map(function(point){
             coords = point.split(', ');
-            lat = coords[0];
-            lng = coords[1];
+            lat = parseFloat(coords[0]);
+            lng = parseFloat(coords[1]);
             objPoints.push(new google.maps.LatLng(lat, lng));
           });
 
@@ -135,7 +135,7 @@
 
           for(var i = 0; i < paths.length; i++){
               points = new google.maps.LatLng(paths.getAt(i).lat(), paths.getAt(i).lng());
-              bounds.extend(points);                  
+              bounds.extend(points);
           }
         }
         if(settings.map.marker.length > 0){
@@ -147,13 +147,13 @@
           map.setCenter(pos);
           map.setZoom(11);
         } else if(settings.readonly){
-          map.fitBounds(bounds);  
+          map.fitBounds(bounds);
           map.setCenter(bounds.getCenter());
         }
 
       }
     }
-    
+
 
     function setEditListeners(poly){
       google.maps.event.addListener(poly.getPath(), 'insert_at', function(event){
@@ -266,7 +266,7 @@
       });
     }
 
-    
+
 
 
 
@@ -309,7 +309,7 @@
       controlUI.appendChild(controlText);
 
       // Setup the click event listeners
-      controlUI.addEventListener('click', function() { 
+      controlUI.addEventListener('click', function() {
         clearMap();
       });
 
@@ -332,7 +332,7 @@
           var stringLatLng = e.toString();
           points.push(stringLatLng.substring(1, stringLatLng.length-1));
         });
-        
+
         pathField.val(points.join('\n'));
     }
 
