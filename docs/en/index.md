@@ -2,7 +2,9 @@
 
 ## Installation
 
-`composer require somardesignstudios/silverstripe-mapdrawingfield`
+```
+$ composer require somardesignstudios/silverstripe-mapdrawingfield
+```
 
 ## Configuration
 
@@ -12,7 +14,7 @@ Add your Google Maps API key to
 `mysite/_config/config.yml`
 
 ```yml
-MapDrawingField:
+Somar\MapDrawingField:
   api_key: 'YOUR_GOOGLE_MAPS_API_KEY'
 ```
 
@@ -23,44 +25,42 @@ Currently this form field can only be used in the CMS
 ### Basic Usage
 
 ```php
+<?php
 
-$field = MapDrawingField::create('GeoshapeCoordinates');
+use Somar\MapDrawingField;
+
+$field = MapDrawingField::create('GeoshapeCoordinates', 'Region'); // You can now set the field title in the constructor
 
 ```
 
 ### Kitchen Sink 
 
 ```php
+<?php
 
-$otherShapes = array(
-	array(
-		'coords' => '-40.89332925416116, 174.98785257339478
-		-40.89377126107807, 174.98773455619812
-		-40.89502427380917, 174.9895691871643
-		-40.89544599443901, 174.99048113822937
-		-40.89526757450063, 174.9915862083435
-		-40.894626880755496, 174.992036819458
-		-40.893621222363954, 174.99091029167175
-		-40.8933211439149, 174.9902880191803
-		-40.89331303366767, 174.98947262763977',
-		'colour' => '#000'
-	),
-	array(
-		'coords' => '-40.89461066058015, 174.98709082603455
-		-40.89442412827785, 174.9870800971985
-		-40.89498372360693, 174.9868869781494',
-		'colour' => '#333'
-	)
-);
+use Somar\MapDrawingField;
 
-$marker = array('-37.196353', '175.074638');
+$otherShapes = [
+    [
+        'colour' => '#6d55aa',
+        'coords' => '-41.28996356575425,174.78101145006872
+            -41.290672967735716,174.78100072123266
+            -41.29112440134403,174.78240619875646
+            -41.2896814150948,174.78308211542821
+            -41.28951212411342,174.78283535219884
+            -41.29018122400067,174.78171955324865',
+    ],
+    [
+        'colour' => '#358d88',
+        'coords' => '...'
+    ]
+];
 
-$defaultCenter = array('-37.196353', '175.074638');
-
-$defaultZoom = 7;
-
-$field = MapDrawingField::create('GeoshapeCoordinates', '#fff', $otherShapes, true, $defaultCenter, $defaultZoom);
+$field = MapDrawingField::create('GeoshapeCoordinates', 'Region');
+$field->setReadonly(true); // If true, the field shape is not drawn and the drawing tools are disabled
+$field->setCenter([-41.286461, 174.776230]); // The default center position
+$field->setMarker([-41.286461, 174.776230]); // The marker position overwrites the center position
+$field->setColour('#fcd708'); // The colour of the field shape to draw
+$field->setShapes($otherShapes); // The shape boundaries overwrite the marker/center positions
 
 ```
-
-

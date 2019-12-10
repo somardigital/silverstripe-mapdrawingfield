@@ -1,4 +1,5 @@
 en:
-  MapDrawingField:
-    NOMAP: 'If map is not showing, please refresh page'
-   
+  Somar\MapDrawingField:
+    NOMAP: 'If the map is not showing, please refresh the page'
+    CLEARMAP: 'Clear Map'
+    DELETEPOINT: 'Delete Point'
