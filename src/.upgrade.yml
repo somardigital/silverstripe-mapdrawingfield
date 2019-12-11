@@ -1,0 +1,7 @@
+mappings:
+  MapDrawingField: Somar\MapDrawingField
+
+warnings:
+  methods:
+    'Somar\MapDrawingField::__construct()':
+      message: 'Added $title as second argument'
