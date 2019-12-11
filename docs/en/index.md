@@ -11,7 +11,7 @@ $ composer require somardesignstudios/silverstripe-mapdrawingfield
 ### SilverStripe
 
 Add your Google Maps API key to
-`mysite/_config/config.yml`
+`app/_config/config.yml`
 
 ```yml
 Somar\MapDrawingField:
@@ -52,7 +52,7 @@ $otherShapes = [
     ],
     [
         'colour' => '#358d88',
-        'coords' => '...'
+        'coords' => '...',
     ]
 ];
 

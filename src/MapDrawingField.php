@@ -74,16 +74,6 @@ class MapDrawingField extends FormField
     }
 
     /**
-     * Alias of setColour
-     *
-     * @param string $color
-     */
-    public function setColor($color)
-    {
-        return $this->setColour($color);
-    }
-
-    /**
      * Set the readonly setting
      *
      * @param bool $readonly

@@ -4,16 +4,16 @@
   window.mapDrawingFieldInit = function() {
     gmapsAPILoaded = true;
     init();
-  }
+  };
 
   $.fn.mapDrawingField = function() {
     return this.each(initField);
-  }
+  };
 
   function init() {
     $(document).ready(function() {
       $('.mapdrawingfield:visible').mapDrawingField();
-    })
+    });
   }
 
   function initField() {
@@ -23,7 +23,7 @@
     var $controls = $this.find('.mapdrawingfield__controls');
     var $clearControl = $controls.find('.mapdrawingfield__clear');
     var settings = $this.data('settings');
-    var map, drawingManager, marker, polygon, otherPolygons = [];
+    var map, drawingManager, polygon, otherPolygons = [];
 
     if ($this.data('gmapfield-inited') === true) {
       return false;
@@ -58,7 +58,7 @@
         return false;
       }
 
-      var points = normalisePoints($data.val().split('\n'))
+      var points = normalisePoints($data.val().split('\n'));
       polygon = new google.maps.Polygon({
         paths: points,
         draggable: false,
@@ -92,8 +92,8 @@
         return false;
       }
 
-      var position = new google.maps.LatLng(settings.map.marker[0], settings.map.marker[1])
-      marker = new google.maps.Marker({
+      var position = new google.maps.LatLng(settings.map.marker[0], settings.map.marker[1]);
+      var marker = new google.maps.Marker({
         position: position,
         map: map
       });
@@ -270,24 +270,24 @@
         var lng = point.lng();
 
         points.push([lat, lng].join(','));
-      })
+      });
 
-      $data.val(points.join('\n'))
+      $data.val(points.join('\n'));
       showSavePublishButtons();
     }
 
     function normalisePoints(points) {
       return $.map(points, function(point) {
         var coords = point.split(',');
-        var lat = $.trim(coords[0]);
-        var lng = $.trim(coords[1]);
+        var lat = parseFloat(coords[0]);
+        var lng = parseFloat(coords[1]);
 
         return new google.maps.LatLng(lat, lng);
-      })
+      });
     }
 
     function polygonBounds(polygon) {
-      var bounds = new google.maps.LatLngBounds()
+      var bounds = new google.maps.LatLngBounds();
       var path = polygon.getPath();
 
       $.each(path, function(index) {
@@ -320,7 +320,7 @@
         $.each(otherPolygons, function(index, polygon) {
           var otherPolygonBounds = polygonBounds(polygon);
           bounds.union(otherPolygonBounds);
-        })
+        });
       }
 
       map.setCenter(bounds.getCenter());
