@@ -71,7 +71,7 @@
     }
 
     function initOtherShapes() {
-      if (!settings.shapes || !$.isArray(settings.shapes)) {
+      if (!settings.shapes) {
         return false;
       }
 
